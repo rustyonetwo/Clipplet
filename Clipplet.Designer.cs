@@ -1,4 +1,4 @@
-﻿namespace Clippet
+﻿namespace Clipplet
 {
     partial class frmClippletMain
     {
@@ -28,20 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.lblViewer = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // lblViewer
+            // 
+            this.lblViewer.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblViewer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblViewer.Location = new System.Drawing.Point(12, 9);
+            this.lblViewer.Name = "lblViewer";
+            this.lblViewer.Size = new System.Drawing.Size(239, 169);
+            this.lblViewer.TabIndex = 0;
             // 
             // frmClippletMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(265, 189);
+            this.Controls.Add(this.lblViewer);
             this.Name = "frmClippletMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clipplet";
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Label lblViewer;
     }
 }
 
