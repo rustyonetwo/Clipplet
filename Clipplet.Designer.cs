@@ -49,6 +49,7 @@
             this.Name = "frmClippletMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clipplet";
+            this.Load += new System.EventHandler(this.frmClippletMain_Load);
             this.ResumeLayout(false);
 
         }
