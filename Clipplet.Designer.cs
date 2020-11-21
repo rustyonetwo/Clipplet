@@ -51,6 +51,7 @@
             this.Text = "Clipplet";
             this.Load += new System.EventHandler(this.frmClippletMain_Load);
             this.ResumeLayout(false);
+            //this.Load += new System.EventHandler(this.OnContentChanged);
 
         }
 

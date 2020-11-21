@@ -1,0 +1,49 @@
+protected override void WndProc(ref Message m)
+		{
+			switch ((Win32.Msgs)m.Msg)
+			{
+				case Win32.Msgs.WM_DRAWCLIPBOARD:
+					
+					Debug.WriteLine("WindowProc DRAWCLIPBOARD: " + m.Msg, "WndProc");
+
+					GetClipboardData(); //Functional
+
+					Win32.User32.SendMessage(_ClipboardViewerNext, m.Msg, m.WParam, m.LParam);
+					break;
+
+				case Win32.Msgs.WM_CHANGECBCHAIN:
+					Debug.WriteLine("WM_CHANGECBCHAIN: lParam: " + m.LParam, "WndProc");
+
+					if (m.WParam == _ClipboardViewerNext)
+					{
+						_ClipboardViewerNext = m.LParam;
+					}
+					else
+					{
+						Win32.User32.SendMessage(_ClipboardViewerNext, m.Msg, m.WParam, m.LParam);
+					}
+					break;
+
+				default:
+					base.WndProc(ref m);
+					break;
+
+			}
+
+		}
+
+		
+		
+		
+		private void RegisterClipboardViewer()
+		{
+			_ClipboardViewerNext = Win32.User32.SetClipboardViewer(this.Handle);
+		}
+
+
+
+
+		private void UnregisterClipboardViewer()
+		{
+			Win32.User32.ChangeClipboardChain(this.Handle, _ClipboardViewerNext);
+		}
